@@ -9,17 +9,24 @@ public class EmployeeWageContribution {
 		Random random= new Random();
 		int isEmpPresent = random.nextInt(3);
 		int empHR;
-		if (isEmpPresent == 1) {
+		switch(isEmpPresent) {
+			
+		case 1 :
 			System.out.println("Employee is present");
-			empHR = 8;
-		} else if(isEmpPresent == 0){
+			empHR = 8;	
+		break;
+	
+		case 2 :
+			System.out.println("Employee is working part-time");
+			empHR = 4;
+		break;
+		
+		default :
 			System.out.println("Employee is absent");
 			empHR = 0;
+		break;
 		}
-		else {
-			System.out.println("Emp[loyee is working as PartTime");
-			empHR=4;
-		}
+		
 		int empWage = empHR * WAGE_PER_HOUR;
 		System.out.println("Employee Wage is : "+empWage);
 	}
