@@ -4,37 +4,45 @@ import java.util.Random;
 
 public class EmployeeWageContribution {
 	public static void main(String[] args) {
-		
-		final int WAGE_PER_HOUR = 20;	
-		final int workingDays=20;
-int totalSalary = 0;
-Random random= new Random();
-		
-		for (int day=0;day<=workingDays;day++) {
-			int isEmpPresent = random.nextInt(3);
-		int empHR;
-		switch(isEmpPresent) {
-			
-		case 1 :
-			//System.out.println("Employee is present");
-			empHR = 8;	
-		break;
-	
-		case 2 :
-			//System.out.println("Employee is working part-time");
-			empHR = 4;
-		break;
-		
-		default :
-			//System.out.println("Employee is absent");
-			empHR = 0;
-		break;
+		int wagePerHour = 20;
+		int workingHours = 0;
+		int day = 1;
+		int totalWorkingHours = 0;
+		int maxDaysInMonth = 20;
+		int maxHrsinMonth = 100;
+		int totalSalary = 0;
+		final int fullTime = 1;
+		final int partTime = 2;
+		final int absent = 0;
+		Random random = new Random();
+		int empCheck = random.nextInt(3);
+
+		while (day <= maxDaysInMonth && totalWorkingHours <= maxHrsinMonth) {
+			switch (empCheck) {
+			case absent:
+				workingHours = 0;
+				break;
+			case fullTime:
+				workingHours = 8;
+				break;
+			case partTime:
+				workingHours = 4;
+				break;
+			default:
+				break;
+			}
+			totalWorkingHours += workingHours;
+			if (totalWorkingHours >= maxHrsinMonth) {
+				totalWorkingHours -= workingHours;
+				break;
+			}
+			int salary = wagePerHour * workingHours;
+			totalSalary += salary;
+			day++;
+
 		}
-		
-		int empWage = empHR * WAGE_PER_HOUR;
-		totalSalary = totalSalary + empWage;
-		}
-		System.out.println("Employee monthly  Wage is : "+totalSalary);
+		System.out.println(
+				"employee has earned " + totalSalary + " in a month (total working hours " + totalWorkingHours + ")");
 	}
 
 }
