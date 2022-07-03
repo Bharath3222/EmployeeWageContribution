@@ -6,29 +6,35 @@ public class EmployeeWageContribution {
 	public static void main(String[] args) {
 		
 		final int WAGE_PER_HOUR = 20;	
-		Random random= new Random();
-		int isEmpPresent = random.nextInt(3);
+		final int workingDays=20;
+int totalSalary = 0;
+Random random= new Random();
+		
+		for (int day=0;day<=workingDays;day++) {
+			int isEmpPresent = random.nextInt(3);
 		int empHR;
 		switch(isEmpPresent) {
 			
 		case 1 :
-			System.out.println("Employee is present");
+			//System.out.println("Employee is present");
 			empHR = 8;	
 		break;
 	
 		case 2 :
-			System.out.println("Employee is working part-time");
+			//System.out.println("Employee is working part-time");
 			empHR = 4;
 		break;
 		
 		default :
-			System.out.println("Employee is absent");
+			//System.out.println("Employee is absent");
 			empHR = 0;
 		break;
 		}
 		
 		int empWage = empHR * WAGE_PER_HOUR;
-		System.out.println("Employee Wage is : "+empWage);
+		totalSalary = totalSalary + empWage;
+		}
+		System.out.println("Employee monthly  Wage is : "+totalSalary);
 	}
 
 }
